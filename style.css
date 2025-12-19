@@ -8,6 +8,8 @@
 :root {
     --primary-color: #ff6b9d;
     --secondary-color: #c44569;
+    --romance-1: #fff0f6;
+    --romance-2: #ffe6f0;
     --accent-color: #f8b500;
     --text-dark: #2c3e50;
     --text-light: #ffffff;
@@ -237,6 +239,8 @@ body {
     cursor: pointer;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* romantic background behind the media */
+    background: linear-gradient(135deg, var(--romance-1) 0%, var(--romance-2) 100%);
 }
 
 .gallery-item:hover {
@@ -302,10 +306,47 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
-    background: #000;
+    /* romantic background behind the video */
+    background: linear-gradient(135deg, var(--romance-1) 0%, var(--romance-2) 100%);
     /* allow video's native aspect ratio and full-width display */
     width: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animated hearts overlay for a romantic, dynamic feel */
+.gallery-item::before,
+.video-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.12;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ff6b9d' d='M12 21s-8-5.33-8-11.2C4 5.8 7.58 3 12 6c4.42-3 8 0.8 8 3.8C20 15.67 12 21 12 21z'/></svg>");
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    animation: heartsMove 18s linear infinite, heartsPulse 4s ease-in-out infinite;
+}
+
+.gallery-item::after,
+.video-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+@keyframes heartsMove {
+    0% { background-position: 0 0; }
+    50% { background-position: 300px 200px; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes heartsPulse {
+    0%, 100% { opacity: 0.10; transform: scale(1); }
+    50% { opacity: 0.16; transform: scale(1.02); }
 }
 
 .video-item:hover {
