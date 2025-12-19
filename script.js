@@ -1,7 +1,11 @@
 // Media configuration - Opaque IDs from Cloudflare Worker
+// IDs extracted from STATIC_ID_TO_PATH_MAP, categorized by file extension:
+// Photos: .jpg .jpeg .png .webp .gif
+// Videos: .mp4 .mov
+// Worker automatically discovers additional files at runtime and merges with static mappings
 const MEDIA_CONFIG = {
-    photos: ['122bp', 'a91kx'], // Photo IDs
-    videos: ['z82pm', 'v7m2a']  // Video IDs
+    photos: ['122bp'], // Photo IDs from STATIC_ID_TO_PATH_MAP (image/101ac17b-b0b7-4482-bd53-5d589cd30631.JPG)
+    videos: []  // Video IDs from STATIC_ID_TO_PATH_MAP
 };
 
 const MEDIA_BASE_URL = 'https://birthday-media-proxy.tyagisaksham576.workers.dev/media?id=';
