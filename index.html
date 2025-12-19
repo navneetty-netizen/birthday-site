@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Happy Birthday</h1>
+            <p class="hero-subtitle fade-in-delay">A Special Day for Someone Special</p>
+            <div class="scroll-indicator fade-in-delay-2">
+                <span>Scroll to explore</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section" id="countdown">
+        <div class="container">
+            <h2 class="section-title">Counting Down to January 11</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">0</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">0</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">0</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">0</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Memories</h2>
+            <p class="section-subtitle">Moments captured in time</p>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photos will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="videos">
+        <div class="container">
+            <h2 class="section-title">Special Moments</h2>
+            <p class="section-subtitle">Videos that tell our story</p>
+            <div class="video-container" id="videoContainer">
+                <!-- Videos will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Message Section -->
+    <section class="message-section" id="message">
+        <div class="container">
+            <div class="message-card">
+                <h2 class="message-title">A Letter for You</h2>
+                <div class="message-content">
+                    <p>On this special day, I want you to know how much you mean to me. Every moment we've shared has been a treasure, and I'm grateful for every memory we've created together.</p>
+                    <p>You bring light into my life in ways I never imagined possible. Your smile, your laughter, your presence—everything about you makes my world brighter.</p>
+                    <p>As we celebrate another year of your amazing journey, I hope this day is filled with all the joy, love, and happiness you deserve. You are truly special, and I'm so lucky to have you in my life.</p>
+                    <p class="message-signature">With all my love ❤️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Gallery image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
