@@ -113,6 +113,10 @@ function initVideos() {
     video.controls = true;
     video.preload = "metadata";
     video.playsInline = true;
+    // Enable muted autoplay and continuous looping so videos play without user tap
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
 
     const loadingDiv = document.createElement("div");
     loadingDiv.className = "video-loading";
@@ -127,6 +131,10 @@ function initVideos() {
     video.onloadedmetadata = () => {
       loadingDiv.remove();
       videoItem.appendChild(video);
+      // Try to play; some browsers still require a user gesture unless muted
+      try {
+        video.play().catch(() => {});
+      } catch (e) {}
     };
 
     fragment.appendChild(videoItem);
