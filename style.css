@@ -229,7 +229,8 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    aspect-ratio: 1;
+    /* allow natural image height so images display full-size */
+    min-height: 150px;
     cursor: pointer;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -242,8 +243,9 @@ body {
 
 .gallery-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* preserve natural aspect ratio */
+    object-fit: contain; /* show full image without cropping */
+    display: block;
     transition: transform 0.5s ease;
 }
 
@@ -295,7 +297,8 @@ body {
     overflow: hidden;
     box-shadow: var(--shadow);
     background: #000;
-    aspect-ratio: 16/9;
+    /* allow video's native aspect ratio and full-width display */
+    width: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -306,8 +309,8 @@ body {
 
 .video-item video {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* keep native aspect ratio */
+    object-fit: contain;
     display: block;
 }
 

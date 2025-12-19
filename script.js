@@ -1,3 +1,6 @@
+// FRONTEND ONLY
+// Do NOT reference filenames, folders, GitHub URLs, or regenerate media IDs
+// Media must ONLY load via the Cloudflare Worker using opaque IDs
 // Media configuration - Opaque IDs from Cloudflare Worker
 // MUST stay in sync with birthday-media-proxy Worker
 const MEDIA_CONFIG = {
