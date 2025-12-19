@@ -215,10 +215,13 @@ body {
 /* Gallery Section */
 .gallery-section {
     padding: 80px 20px;
-    /* romantic soft gradient + subtle radial accents */
-    background: linear-gradient(180deg, #fff6fb 0%, #fff0f6 100%);
-    background-image: radial-gradient(circle at 10% 10%, rgba(255,107,157,0.06), transparent 12%), radial-gradient(circle at 90% 90%, rgba(196,69,105,0.03), transparent 18%);
-    border: 1px solid rgba(196,69,105,0.04);
+    position: relative;
+    overflow: hidden;
+    /* romantic, dynamic animated gradient */
+    background: linear-gradient(120deg, #ff9ab3 0%, #ffd1e6 40%, #ffc6a5 75%);
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+    border: 1px solid rgba(196,69,105,0.05);
 }
 
 .gallery-grid {
@@ -272,6 +275,36 @@ body {
     opacity: 1;
 }
 
+/* floating hearts overlay for romantic feel */
+.gallery-section::before,
+.video-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    /* small heart SVG tiled */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='20' viewBox='0 0 22 20'><path fill='%23ff6b9d' d='M11 18s-8-5.2-11-8.1C-1.6 7.2 1.8 2 6.6 3.1 8.3 3.5 9.3 4.8 11 6.1c1.7-1.3 2.7-2.6 4.4-3 4.8-1.2 8.2 4.1 6.6 6.9C19 12.8 11 18 11 18z'/></svg>");
+    background-repeat: repeat;
+    background-size: 60px 54px;
+    opacity: 0.06;
+    mix-blend-mode: screen;
+    transform: translateY(0);
+    animation: heartsFloat 18s linear infinite;
+}
+
+/* subtle vignette for depth */
+.gallery-section::after,
+.video-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0) 30%, rgba(0,0,0,0.06) 100%);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.9;
+}
+
 .gallery-loading {
     display: flex;
     align-items: center;
@@ -284,10 +317,26 @@ body {
 /* Video Section */
 .video-section {
     padding: 80px 20px;
-    /* complementary gentle background for videos */
-    background: linear-gradient(180deg, #fff8f9 0%, #fff3f7 100%);
-    background-image: radial-gradient(circle at 20% 30%, rgba(246,181,197,0.04), transparent 10%), radial-gradient(circle at 80% 70%, rgba(246,181,197,0.03), transparent 16%);
-    border-top: 1px solid rgba(255,107,157,0.03);
+    position: relative;
+    overflow: hidden;
+    /* matching animated romantic gradient for videos */
+    background: linear-gradient(120deg, #ffd1e6 0%, #ffe6f2 40%, #ffd9d1 100%);
+    background-size: 300% 300%;
+    animation: gradientShift 14s ease-in-out infinite;
+    border-top: 1px solid rgba(255,107,157,0.04);
+}
+
+/* Animations used by gradients and overlays */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes heartsFloat {
+    0% { transform: translateY(0); opacity: 0.06; }
+    50% { transform: translateY(-8%); opacity: 0.08; }
+    100% { transform: translateY(0); opacity: 0.06; }
 }
 
 .video-container {
