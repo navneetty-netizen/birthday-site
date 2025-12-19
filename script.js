@@ -1,8 +1,18 @@
 // Media configuration - Opaque IDs from Cloudflare Worker
+// MUST stay in sync with birthday-media-proxy Worker
 const MEDIA_CONFIG = {
-    photos: ['122bp', 'a91kx'], // Photo IDs
-    videos: ['z82pm', 'v7m2a']  // Video IDs
+  photos: [
+    "nPT7h","OA3M1","Sr5rZ","1-XoX","d76NA","n_JoR","j_oFK","sVJST",
+    "0_lCi","BcaUk","0hyT0","BAH91","C09ul","sFWO5","orYRR","Upsj-",
+    "5CCu5","FZL1L","Q6ZPf","tCmmR","3ZDTs","fNqF-","jSdkv","JbSpG",
+    "TF406","Ug_0U","FyxfT","X6ngS","hSsRV","JZfA0","p1KFE","8iV1n",
+    "HZKXM","xAY-D","cOV31","kuAqb","W5gay"
+  ],
+  videos: [
+    "FnY03","i3zgH","z7ixn","k8STW","c74Qn","j-1E4","p7gsq"
+  ]
 };
+
 
 const MEDIA_BASE_URL =
   "https://birthday-media-proxy.tyagisaksham576.workers.dev/media?id=";
