@@ -89,6 +89,14 @@ function initGallery() {
     galleryItem.className = "gallery-item";
     galleryItem.dataset.index = index;
 
+    // give each photo a tiny random rotation/offset to feel handcrafted
+    const r = (Math.random() * 8 - 4).toFixed(2) + "deg"; // -4deg..4deg
+    const tx = (Math.random() * 8 - 4).toFixed(2) + "px"; // -4px..4px
+    const ty = (Math.random() * 12 - 6).toFixed(2) + "px"; // -6px..6px
+    galleryItem.style.setProperty('--r', r);
+    galleryItem.style.setProperty('--tx', tx);
+    galleryItem.style.setProperty('--ty', ty);
+
     const img = document.createElement("img");
     img.src = `${MEDIA_BASE_URL}${photoId}`;
     img.alt = `Memory ${index + 1}`;
@@ -121,6 +129,14 @@ function initVideos() {
     const videoItem = document.createElement("div");
     videoItem.className = "video-item";
 
+    // subtle variation for video tiles (smaller rotation)
+    const vr = (Math.random() * 6 - 3).toFixed(2) + "deg"; // -3..3
+    const vtx = (Math.random() * 6 - 3).toFixed(2) + "px";
+    const vty = (Math.random() * 10 - 5).toFixed(2) + "px";
+    videoItem.style.setProperty('--r', vr);
+    videoItem.style.setProperty('--tx', vtx);
+    videoItem.style.setProperty('--ty', vty);
+
     const video = document.createElement("video");
     video.src = `${MEDIA_BASE_URL}${videoId}`;
     video.controls = true;
@@ -151,6 +167,10 @@ function initVideos() {
         video.play().catch(() => {});
       } catch (e) {}
     };
+
+    // make hover feel alive by raising stacking during pointer enter
+    videoItem.addEventListener('mouseenter', () => videoItem.style.zIndex = 4);
+    videoItem.addEventListener('mouseleave', () => videoItem.style.zIndex = '');
 
     fragment.appendChild(videoItem);
   });

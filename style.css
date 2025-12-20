@@ -257,9 +257,34 @@ body {
     filter: blur(0) saturate(1);
 }
 
+/* Make gallery items feel handcrafted: tiny random offsets/rotation and soft frame */
+.gallery-item {
+    --r: 0deg; /* rotation */
+    --tx: 0px; /* translate X */
+    --ty: 0px; /* translate Y */
+    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+    will-change: transform, box-shadow;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.55);
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: normal;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transform: translateZ(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
 .gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px) scale(1.06) rotate(0deg);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.22);
+    z-index: 3;
+}
 }
 
 .gallery-item img {
@@ -385,6 +410,20 @@ body {
 .video-item.loaded {
     opacity: 1;
     filter: blur(0) saturate(1);
+}
+
+/* gentle handcrafted offsets for videos too */
+.video-item {
+    --r: 0deg;
+    --tx: 0px;
+    --ty: 0px;
+    transform: translate(var(--tx), var(--ty)) rotate(var(--r));
+}
+
+.video-item:hover {
+    transform: translateY(-8px) scale(1.03) rotate(0deg);
+    box-shadow: 0 22px 50px rgba(0,0,0,0.18);
+    z-index: 2;
 }
 
 /* Animated hearts overlay for a romantic, dynamic feel */
