@@ -144,6 +144,8 @@ function initVideos() {
     video.onloadedmetadata = () => {
       loadingDiv.remove();
       videoItem.appendChild(video);
+      // mark the video item as loaded so CSS can fade it in
+      videoItem.classList.add("loaded");
       // Try to play; some browsers still require a user gesture unless muted
       try {
         video.play().catch(() => {});
@@ -188,13 +190,23 @@ function openLightbox(index) {
   );
   currentImageIndex = index;
 
+  // smoothly fade the lightbox image when it finishes loading
+  img.classList.remove("loaded");
+  img.onload = () => img.classList.add("loaded");
   img.src = currentImages[currentImageIndex];
   lightbox.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").classList.remove("active");
+  const lb = document.getElementById("lightbox");
+  const img = document.getElementById("lightboxImage");
+  lb.classList.remove("active");
+  // clear loaded state so next open fades again
+  if (img) {
+    img.classList.remove("loaded");
+    img.onload = null;
+  }
   document.body.style.overflow = "";
 }
 
@@ -202,15 +214,23 @@ function showPrevImage() {
   currentImageIndex =
     (currentImageIndex - 1 + currentImages.length) %
     currentImages.length;
-  document.getElementById("lightboxImage").src =
-    currentImages[currentImageIndex];
+  const img = document.getElementById("lightboxImage");
+  if (img) {
+    img.classList.remove("loaded");
+    img.onload = () => img.classList.add("loaded");
+    img.src = currentImages[currentImageIndex];
+  }
 }
 
 function showNextImage() {
   currentImageIndex =
     (currentImageIndex + 1) % currentImages.length;
-  document.getElementById("lightboxImage").src =
-    currentImages[currentImageIndex];
+  const img = document.getElementById("lightboxImage");
+  if (img) {
+    img.classList.remove("loaded");
+    img.onload = () => img.classList.add("loaded");
+    img.src = currentImages[currentImageIndex];
+  }
 }
 
 // Scroll animations
