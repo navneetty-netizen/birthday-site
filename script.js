@@ -1,3 +1,8 @@
+/* ❗ SECURITY & ARCHITECTURE NOTE
+   - Media URLs MUST come from Cloudflare Worker
+   - Do NOT change MEDIA_CONFIG structure
+   - Do NOT introduce local assets
+*/
 // FRONTEND ONLY
 // Do NOT reference filenames, folders, GitHub URLs, or regenerate media IDs
 // Media must ONLY load via the Cloudflare Worker using opaque IDs

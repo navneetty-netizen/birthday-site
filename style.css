@@ -1,3 +1,9 @@
+/* ❗ LAYOUT INVARIANT
+   Gallery relies on:
+   - aspect-ratio
+   - object-fit: cover
+   Changing these WILL break rendering.
+*/
 /* Reset and Base Styles */
 * {
     margin: 0;
