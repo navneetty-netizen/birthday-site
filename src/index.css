@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #ff6b9d;
+  --secondary: #c44569;
+  --accent: #f8b500;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* For 3D canvas */
+  background: #000;
+  font-family: 'Inter', sans-serif;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
